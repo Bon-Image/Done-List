@@ -17,6 +17,7 @@ module.exports = {
 
       title: 'Output Management',
       template:'./src/index.html', 
+      scriptLoading:'defer', 
       filename:'index.html', 
     }),
 
