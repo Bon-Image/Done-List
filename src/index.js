@@ -1,15 +1,22 @@
 import "./style.css";
-import { initializeProject } from "./DOM-functions";
 import { Project } from "./project";
 import { ProjectList } from "./project-list";
+import {
+  createProjectListItem,
+  appendToDOM,
+  setupEventListener,
+} from "./DOM-functions";
 
-const addProjectButton = document.getElementById("add-project");
+const addProjectButton = document.getElementById("add-project-btn");
 
-const projetcs = new ProjectList();
+// Initialize the ProjectList singleton
+const projects = ProjectList.getInstance();
+
 const defaultProject = new Project("Default Project");
 
-initializeProject(defaultProject, projetcs);
+const defaultListItem = createProjectListItem(defaultProject);
+setupEventListener(defaultListItem, "click");
+appendToDOM(defaultListItem, ".project-list");
 
-addProjectButton.addEventListener("click", (event) =>
-  initializeProject("New Project", projetcs),
-);
+// Add the default project to the ProjectList
+projects.addProject(defaultProject);

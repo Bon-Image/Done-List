@@ -22,9 +22,22 @@ module.exports = {
     rules: [
       {
         test: /\.css$/i,
-
         use: ["style-loader", "css-loader"],
       },
     ],
+  },
+
+  resolve: {
+    fallback: {
+      assert: false,
+      buffer: false,
+      crypto: false,
+      stream: false,
+      util: false,
+      path: false,
+      os: false,
+      fs: false,
+      url: false,
+    },
   },
 };
