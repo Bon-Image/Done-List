@@ -1,22 +1,15 @@
-import "./style.css"; 
-import { editProjectName , saveProjectName} from "./DOM-functions";
+import "./style.css";
+import { initializeProject } from "./DOM-functions";
+import { Project } from "./project";
+import { ProjectList } from "./project-list";
 
-const projectNames = document.getElementsByClassName('project-name');
-const inputs = document.getElementsByClassName('edit-input'); 
+const addProjectButton = document.getElementById("add-project");
 
-// Convert the HTMLCollection to an array (optional) and add event listeners to each element
-Array.from(projectNames).forEach((projectName) => {
+const projetcs = new ProjectList();
+const defaultProject = new Project("Default Project");
 
-    projectName.addEventListener('click', (event) => editProjectName(event.target));
+initializeProject(defaultProject, projetcs);
 
-});
-
-
-Array.from(inputs).forEach(input => {
-
-    input.addEventListener('blur', (event) => saveProjectName(event.target)); 
-
-}); 
-
-
-
+addProjectButton.addEventListener("click", (event) =>
+  initializeProject("New Project", projetcs),
+);
