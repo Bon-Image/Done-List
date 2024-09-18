@@ -1,14 +1,26 @@
 import { Project } from "./project";
 import { format } from "date-fns";
+import { Done } from "./done";
 
 // Purpose: Create a Project Object
 // Signature: String -> Project
 // Example(s) : createProject('Home Remdoel');
 
 function createProject(name) {
-  const project = new Project(name);
+  if (name) {
+    const project = new Project(name);
+    return project;
+  } else {
+    const newProject = new Project("New Project");
+    const projectId = newProject.id;
+    newProject.name = `Project ${projectId}`;
+    return newProject;
+  }
+}
 
-  return project;
+function createDoneItem() {
+  const done = new Done();
+  return done;
 }
 
 // Purpose: Fetch the current date down to minute
@@ -22,4 +34,4 @@ function fetchDate() {
   return formatedDate;
 }
 
-export { createProject };
+export { createProject, createDoneItem };

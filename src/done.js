@@ -70,7 +70,7 @@ class Done {
      * Formatted date string.
      * @type {string}
      */
-    this.formattedDate = format(this.date, "yyyy-MM-dd"); // Format the date using date-fns
+    this.formattedDate = format(this.date, "dd-MM-yyyy"); // Format the date using date-fns
   }
 
   /**

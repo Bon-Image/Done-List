@@ -1,4 +1,161 @@
+@font-face {
+  font-family: "MyFont";
+
+  src: url("./fonts/Open_Sans/OpenSans-VariableFont_wdth\,wght.ttf")
+    format("woff2");
+
+  font-weight: 600;
+
+  font-style: normal;
+}
+
+* {
+  padding: 0;
+  margin: 0;
+  font-family: "MyFont";
+}
+
+body {
+  background: #ad3e39;
+}
 .content {
+  display: grid;
+  grid-template-columns: 2fr 5fr;
+  margin-top: clamp(30px, 5vh, 50px);
+  column-gap: 5vw;
+}
+
+.sidebar {
+  margin-left: clamp(20px, 3vw, 30px);
+  display: flex;
+  flex-direction: column;
+  gap: 5vh;
+  border-radius: 5px;
+  padding: 1vh;
+  color: black;
+  font-size: 4vw;
+}
+
+#project-title {
+  text-align: center;
+  font-size: 5vw;
+}
+
+.done-item {
+  display: flex;
+  flex-direction: column;
+  gap: 1vh;
+}
+
+.done-item-title {
+  margin-bottom: 2vh;
+  font-size: 2vw;
+}
+
+.project-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 8vh;
+}
+
+.done-items-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 4vh;
+}
+
+.add-task-button {
+  width: 90px;
+  height: 30px;
+  border: solid 1px white;
+  border-radius: 5px;
+  background-color: #ad3e39;
+  color: white;
+}
+
+.add-task-button:active {
+  transform: translateX(4px);
+  box-shadow: 0 2px white;
+}
+
+.sidebar-header {
+  display: flex;
+  flex-direction: column;
+  gap: 1vh;
+  align-items: center;
+}
+
+ul {
+  display: flex;
+  flex-direction: column;
+  gap: 2vh;
+}
+
+li {
+  list-style-type: none;
+  font-size: 3vw;
+}
+
+.main-window {
+  color: white;
+}
+
+.done-item {
+  padding-bottom: 1vh;
+  border-bottom: solid 1px white;
+  border-image: radial-gradient(
+      circle,
+      rgba(255, 255, 255, 1),
+      rgba(173, 62, 57, 1)
+    )
+    1;
+}
+
+.add-project-btn {
+  height: 10vw;
+  width: 100%;
+  font-size: 2vw;
+  background-color: #ad3e39;
+  border: black solid 1 px;
+  border-radius: 5px;
+}
+
+a {
+  text-decoration: none;
+  color: black;
+}
+
+nav {
   display: flex;
   flex-direction: row;
+  justify-content: space-around;
+  padding: 1vh;
+  border-bottom: 1px solid black;
+}
+
+.remove-done-button {
+  height: 5vh;
+  width: 5vw;
+}
+/* -------------------------------------------------- Concept-------------------------------------------------- */
+body.concept {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 1fr 10fr;
+}
+
+div.concept {
+  text-align: center;
+  width: 50vw;
+}
+
+.concept a {
+  color: white;
+}
+
+.concept-main-content-area {
+  display: grid; /* Enables grid layout */
+  height: 100vh; /* Full viewport height */
+  justify-content: center; /* Centers the div horizontally */
+  align-items: center;
 }

@@ -5,18 +5,28 @@ import {
   createProjectListItem,
   appendToDOM,
   setupEventListener,
+  setProjectTitle,
+  initializeProject,
 } from "./DOM-functions";
 
-const addProjectButton = document.getElementById("add-project-btn");
-
 // Initialize the ProjectList singleton
-const projects = ProjectList.getInstance();
+const projectList = ProjectList.getInstance();
 
-const defaultProject = new Project("Default Project");
+const addProjectButton = document.querySelector(".add-project-btn");
+setupEventListener(
+  addProjectButton,
+  "click",
+  initializeProject.bind(null, projectList),
+);
+initializeProject("Default Project");
 
-const defaultListItem = createProjectListItem(defaultProject);
-setupEventListener(defaultListItem, "click");
-appendToDOM(defaultListItem, ".project-list");
+// const defaultProject = new Project("Default Project");
+// projectList.addProject(defaultProject);
+// const defaultListItem = createProjectListItem(defaultProject);
+// setupEventListener(defaultListItem, "click", setProjectTitle);
+// appendToDOM(defaultListItem, ".project-list");
 
-// Add the default project to the ProjectList
-projects.addProject(defaultProject);
+// // Add the default project to the ProjectList
+// projectList.addProject(defaultProject);
+
+export { projectList };
