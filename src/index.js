@@ -19,7 +19,7 @@ setupEventListener(
   initializeProject.bind(null, projectList),
 );
 initializeProject("Default Project");
-
+document.getElementById("year").textContent = new Date().getFullYear();
 // const defaultProject = new Project("Default Project");
 // projectList.addProject(defaultProject);
 // const defaultListItem = createProjectListItem(defaultProject);

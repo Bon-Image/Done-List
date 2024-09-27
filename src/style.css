@@ -1,12 +1,16 @@
+/* Font and Root Variables */
+
 @font-face {
   font-family: "MyFont";
-
   src: url("./fonts/Open_Sans/OpenSans-VariableFont_wdth\,wght.ttf")
     format("woff2");
-
   font-weight: 600;
-
   font-style: normal;
+}
+
+:root {
+  --sidbar-color: #024034ff;
+  --card-background-color: rgb(142, 178, 171);
 }
 
 * {
@@ -15,41 +19,38 @@
   font-family: "MyFont";
 }
 
-body {
-  background: #ad3e39;
+header {
+  display: grid;
+  grid-template-columns: 2fr 5fr;
 }
+
+/* Navigation Bar */
+nav {
+  padding: 1vw;
+  background-color: var(--sidbar-color);
+  grid-column: 1 / 2;
+}
+/*General Layout and Structure*/
+
 .content {
   display: grid;
   grid-template-columns: 2fr 5fr;
-  margin-top: clamp(30px, 5vh, 50px);
-  column-gap: 5vw;
 }
 
 .sidebar {
-  margin-left: clamp(20px, 3vw, 30px);
   display: flex;
   flex-direction: column;
-  gap: 5vh;
-  border-radius: 5px;
-  padding: 1vh;
-  color: black;
-  font-size: 4vw;
+  gap: 2vh;
+  padding: 2vh;
+  color: white;
+  min-height: 100vh;
+  border-right: solid 1px #73baff;
+  background-color: var(--sidbar-color);
 }
 
-#project-title {
-  text-align: center;
-  font-size: 5vw;
-}
-
-.done-item {
-  display: flex;
-  flex-direction: column;
-  gap: 1vh;
-}
-
-.done-item-title {
-  margin-bottom: 2vh;
-  font-size: 2vw;
+.main-window {
+  background-color: white;
+  padding: 2vw;
 }
 
 .project-wrapper {
@@ -64,25 +65,116 @@ body {
   gap: 4vh;
 }
 
-.add-task-button {
-  width: 90px;
-  height: 30px;
-  border: solid 1px white;
-  border-radius: 5px;
-  background-color: #ad3e39;
+/* -------------------------------------------------- Dropdown -------------------------------------------------- */
+
+button {
+  border: none;
+  text-align: left;
+  letter-spacing: 0;
+}
+
+button:hover,
+button:active {
+  letter-spacing: 2px;
+}
+
+button:after,
+button:before {
+  backface-visibility: hidden;
+  border: 1px solid rgba(#020000, 0);
+  bottom: 0px;
+  content: " ";
+  display: block;
+  margin: 0 auto;
+  position: relative;
+  transition: all 280ms ease-in-out;
+  width: 0;
+}
+
+button:hover:after,
+button:hover:before {
+  backface-visibility: hidden;
+  border-color: #060000;
+  transition: width 350ms ease-in-out;
+  width: 70%;
+}
+
+button:hover:before {
+  bottom: auto;
+  top: 0;
+  width: 70%;
+}
+
+.add-task-button,
+.remove-done-button,
+.remove-project-button {
+  background-color: #008080ff;
+  height: 3.5vh;
+  width: 9vw;
+  font-size: 1vw;
+  text-align: center;
   color: white;
 }
 
-.add-task-button:active {
-  transform: translateX(4px);
-  box-shadow: 0 2px white;
+.remove-project-button {
+  width: 10vw;
 }
+
+.add-project-btn {
+  background-color: var(--sidbar-color);
+  color: white;
+  font-size: 1.25vw;
+}
+
+/*Project and Task Items*/
+
+#project-title {
+  text-align: center;
+}
+
+.done-item {
+  display: flex;
+  flex-direction: column;
+  gap: 1vh;
+  background-color: var(--card-background-color);
+  padding: 2vw;
+  border-left: solid 5px rgb(60, 217, 75);
+  line-height: 3vh;
+  font-size: 1.5vw;
+  color: white;
+}
+
+.done-item-title {
+  margin-bottom: 2vh;
+  font-size: 2vw;
+}
+
+.done-item:hover {
+  box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.3); /* Smaller shadow on click */
+  transform: translateY(3px); /* Slight downward movement */
+}
+
+.project-header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  background-color: var(--card-background-color);
+  box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.3); /* Smaller shadow on click */
+  padding: 1vw;
+  text-align: center;
+  color: white;
+}
+
+/*Navigation and Sidebar*/
 
 .sidebar-header {
   display: flex;
   flex-direction: column;
   gap: 1vh;
-  align-items: center;
+}
+
+h2 {
+  text-align: center;
 }
 
 ul {
@@ -93,49 +185,70 @@ ul {
 
 li {
   list-style-type: none;
-  font-size: 3vw;
 }
 
-.main-window {
-  color: white;
-}
-
-.done-item {
-  padding-bottom: 1vh;
-  border-bottom: solid 1px white;
-  border-image: radial-gradient(
-      circle,
-      rgba(255, 255, 255, 1),
-      rgba(173, 62, 57, 1)
-    )
-    1;
-}
-
-.add-project-btn {
-  height: 10vw;
-  width: 100%;
-  font-size: 2vw;
-  background-color: #ad3e39;
-  border: black solid 1 px;
-  border-radius: 5px;
+li:hover {
+  letter-spacing: 5px;
+  text-decoration: underline;
 }
 
 a {
   text-decoration: none;
-  color: black;
+  color: white;
 }
 
-nav {
+.control-panel {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+/* -------------------------------------------------- Dropdown -------------------------------------------------- */
+
+/* General Dropdown Styling */
+.dropdown {
+  position: relative;
   display: flex;
   flex-direction: row;
-  justify-content: space-around;
-  padding: 1vh;
-  border-bottom: 1px solid black;
+  align-items: center;
+  justify-content: start;
+  gap: 10px;
+  color: white;
 }
 
-.remove-done-button {
-  height: 5vh;
-  width: 5vw;
+/* Dropdown Button Styling */
+.dropdown-button {
+  background-color: var(--sidbar-color);
+  color: white;
+  padding: 10px;
+  border: none;
+  cursor: pointer;
+}
+
+/* Initially Hidden Dropdown Content */
+.dropdown-content {
+  display: block; /* Keep it block or flex */
+  opacity: 0; /* Fully transparent */
+  visibility: hidden; /* Hidden but still occupies space */
+  transition:
+    opacity 5s ease,
+    visibility 0s 10s; /* Visibility delay for fade-out */
+  white-space: nowrap; /* Keep items in one line */
+}
+
+/* Fade-in Dropdown Content on Hover */
+.dropdown-button:hover + .dropdown-content {
+  opacity: 1; /* Fully visible */
+  visibility: visible; /* Show content */
+  transition:
+    opacity 1.5s ease,
+    visibility 0s 0s; /* Instant visibility with no delay */
+}
+
+footer {
+  text-align: center;
+  display: grid;
+  grid-template-columns: 2fr 5fr;
 }
 /* -------------------------------------------------- Concept-------------------------------------------------- */
 body.concept {

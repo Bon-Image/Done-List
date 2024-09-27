@@ -135,9 +135,9 @@ function handleProjectClick(event) {
   const projectHeaderButton = document.querySelector(".project-header button");
   if (projectHeaderButton) clean(projectHeaderButton);
 
-  const addTaskButton = createButton("Add Task >", "add-task-button");
+  const addTaskButton = createButton("+ Add Task >", "add-task-button");
   const removeProjectButton = createButton(
-    "Delete Project",
+    "- Delete Project",
     "remove-project-button",
   );
 
@@ -234,7 +234,7 @@ function createDoneItemDiv(doneItem, projectId) {
   );
 
   const removeDoneItemButton = document.createElement("button");
-  removeDoneItemButton.textContent = "Delete";
+  removeDoneItemButton.textContent = "- Delete Task";
   removeDoneItemButton.className = "remove-done-button";
   removeDoneItemButton.addEventListener("click", () =>
     removeDone(doneItem, projectId),
